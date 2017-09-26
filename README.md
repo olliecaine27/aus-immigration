@@ -1,16 +1,19 @@
-# Why? [![Build Status](https://travis-ci.org/Travelport-Ukraine/npm-module-boilerplate.svg?branch=master)](https://travis-ci.org/Travelport-Ukraine/npm-module-boilerplate)
-:page_with_curl: Boilerplate for npm/node module. Write with ES6 - have compatibility with all node versions.
+## What it is
 
-This boilerplate is for people who want write code using all ES6 features ( and stage-2 ) but also want/need backwards compatibility with old node versions. 
+I built this project to both test the process of building and deploying an NPM package but also to make it easier for people to calculate their total immigration points set out by the Department of Immigration and Border Protection, both now and in the future (as some variables change based on time).
 
-# Features
+The official points list set by the Australian Government: 
+https://www.border.gov.au/Trav/Visa-1/189-?modal=/visas/supporting/Pages/skilled/the-points-table.aspx
+
+## Features
+
 * Build with [Babel](https://babeljs.io). (ES6 -> ES5)
 * Test with [mocha](https://mochajs.org).
 * Cover with [istanbul](https://github.com/gotwarlost/istanbul).
 * Check with [eslint](eslint.org).
 * Deploy with [Travis](travis-ci.org).
 
-# Commands
+## Commands
 - `npm run clean` - Remove `lib/` directory
 - `npm test` - Run tests. Tests can be written with ES6 (WOW!)
 - `npm test:watch` - You can even re-run tests on file changes!
@@ -20,6 +23,6 @@ This boilerplate is for people who want write code using all ES6 features ( and 
 - `npm run build` - Do some magic with ES6 to create ES5 code.
 - `npm run prepublish` - Hook for npm. Do all the checks before publishing you module.
 
-# Installation
+## Installation
 Just clone this repo and remove `.git` folder.
 

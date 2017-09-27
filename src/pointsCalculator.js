@@ -1,4 +1,5 @@
-import { ENGLISH_LEVEL } from '../src/englishLevel';
+import ENGLISH_LEVEL from './englishLevel';
+import QUALIFICATIONS from './qualifications';
 
 export default class {
 
@@ -10,6 +11,30 @@ export default class {
         const ageDifMs = ageOnDate - birthday.getTime();
         const ageDate = new Date(ageDifMs); // miliseconds from epoch
         return Math.abs(ageDate.getUTCFullYear() - 1970);
+    }
+
+    skilledEmploymentInAustralia(years) {
+        if (years < 1) return 0;
+        if (years < 2) return 5;
+        if (years < 4) return 10;
+        if (years < 7) return 15;
+        if (years < 10) return 20;
+        return 0;
+    }
+
+    qualitificationPoints(qualificationLevel) {
+        switch (qualificationLevel) {
+        case QUALIFICATIONS.DoctorateDegree:
+            return 20;
+        case QUALIFICATIONS.BachelorDegree:
+            return 15;
+        case QUALIFICATIONS.DiplomaOrTradeQualification:
+            return 10;
+        case QUALIFICATIONS.NominatedSkilledOccupation:
+            return 10;
+        default:
+            return 0;
+        }
     }
 
     agePoints(age) {

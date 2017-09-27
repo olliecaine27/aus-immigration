@@ -5,31 +5,51 @@ describe('Skilled employment in the last 10 years – in Australia', () => {
 
 	describe('Less than 1 year', () => {
 		it('Should accrue 0 points', () => {
-			assert(false, 'To do');
+			let pointsCalculator = new PointsCalculator();
+
+			let result = pointsCalculator.skilledEmploymentInAustralia(0.5);
+
+			assert(result === 0, 'Result not 0');
 		})
 	})
 
 	describe('1-2 years', () => {
 		it('Should accrue 5 points', () => {
-			assert(false, 'To do');
+			let pointsCalculator = new PointsCalculator();
+
+			let result = pointsCalculator.skilledEmploymentInAustralia(1.5);
+
+			assert(result === 5, 'Result not 5');
 		})
 	})
 
 	describe('3-4 years', () => {
 		it('Should accrue 10 points', () => {
-			assert(false, 'To do');
+			let pointsCalculator = new PointsCalculator();
+
+			let result = pointsCalculator.skilledEmploymentInAustralia(3.5);
+
+			assert(result === 10, 'Result not 10');
 		})
 	})
 
 	describe('5-7 years', () => {
 		it('Should accrue 15 points', () => {
-			assert(false, 'To do');
+			let pointsCalculator = new PointsCalculator();
+
+			let result = pointsCalculator.skilledEmploymentInAustralia(6);
+
+			assert(result === 15, 'Result not 15');
 		})
 	})
 
 	describe('8-10 years', () => {
 		it('Should accrue 20 points', () => {
-			assert(false, 'To do');
+			let pointsCalculator = new PointsCalculator();
+
+			let result = pointsCalculator.skilledEmploymentInAustralia(9);
+
+			assert(result === 20, 'Result not 20');
 		})
 	})
 })

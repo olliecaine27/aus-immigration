@@ -1,8 +1,8 @@
 import {assert} from 'chai';
 import PointsCalculator from '../../../src/pointsCalculator';
-import { ENGLISH_LEVEL } from '../../../src/englishLevel';
+import ENGLISH_LEVEL from '../../../src/englishLevel';
 
-describe.only('English', () => {
+describe('English', () => {
 	describe('Competent English', () => {
 		it('Should accrue 0 points', () => {
 			let pointsCalculator = new PointsCalculator();

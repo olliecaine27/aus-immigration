@@ -1,4 +1,4 @@
-export const ENGLISH_LEVEL = {
+export default {
     Competent: 'Competent',
     Proficient: 'Proficient',
     Superior: 'Superior'

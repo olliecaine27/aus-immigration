@@ -1,9 +1,7 @@
 import {assert} from 'chai';
 import PointsCalculator from '../src/pointsCalculator';
 
-// https://www.border.gov.au/Trav/Visa-1/189-?modal=/visas/supporting/Pages/skilled/the-points-table.aspx
-
-describe('pointsOnDate', () => {
+describe('Points on a given date', () => {
 	describe('As an 18 year old', () => {
 		it('Should total 25 points', () => {
 			let config = {
@@ -73,4 +71,32 @@ describe('pointsOnDate', () => {
 			assert(result === 0, 'Oops');
 		})
 	})
+
+	// describe('As a person with Proficient English', () => {
+	// 	it('Should increase total by 10 points', () => {
+	// 		let config = {
+	// 			englishLevel: 1
+	// 		}
+	// 		let pointsCalculator = new PointsCalculator(config);
+	//
+	// 		let today = new Date(2045, 0, 1);
+	// 		let result = pointsCalculator.pointsOnDate(today);
+	//
+	// 		assert(result === 10, 'Oops');
+	// 	})
+	// })
+	//
+	// describe('As a person with Superior English', () => {
+	// 	it('Should increase total by 20 points', () => {
+	// 		let config = {
+	// 			englishLevel: 2
+	// 		}
+	// 		let pointsCalculator = new PointsCalculator(config);
+	//
+	// 		let today = new Date(2045, 0, 1);
+	// 		let result = pointsCalculator.pointsOnDate(today);
+	//
+	// 		assert(result === 20, 'Oops');
+	// 	})
+	// })
 })

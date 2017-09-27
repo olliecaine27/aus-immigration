@@ -22,6 +22,14 @@ export default class {
         return 0;
     }
 
+    skilledEmploymentOutAustralia(years) {
+        if (years < 3) return 0;
+        if (years < 4) return 5;
+        if (years < 7) return 10;
+        if (years < 10) return 15;
+        return 0;
+    }
+
     qualitificationPoints(qualificationLevel) {
         switch (qualificationLevel) {
         case QUALIFICATIONS.DoctorateDegree:

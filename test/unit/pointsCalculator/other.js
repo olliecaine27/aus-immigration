@@ -7,7 +7,7 @@ describe('Other', () => {
 		it('Should accrue 5 points', () => {
 			let pointsCalculator = new PointsCalculator();
 
-			let result = pointsCalculator.accreditedInCommunityLanguage(true);
+			let result = pointsCalculator.accreditedInCommunityLanguagePoints(true);
 
 			assert(result === 5);
 		})

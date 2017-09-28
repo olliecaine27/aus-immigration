@@ -12,11 +12,13 @@ export default class {
         totalPoints += this.englishLevelPoints(config.englishLevel);
         totalPoints += this.skilledEmploymentOutAustraliaPoints(config.skilledEmploymentLengthOutAustralia);
         totalPoints += this.skilledEmploymentInAustraliaPoints(config.skilledEmploymentLengthInAustralia);
-        // if (age < 18) return 0;
-        // if (age < 25) return 25;
-        // if (age < 33) return 30;
-        // if (age < 40) return 25;
-        // if (age < 45) return 15;
+        totalPoints += this.qualitificationPoints(config.qualification);
+        totalPoints += this.australianStudyPoints(config.australianStudyRequirement);
+        totalPoints += this.specialistEducationQualificationPoints(config.specialistEducationQualification);
+        totalPoints += this.accreditedInCommunityLanguagePoints(config.accreditedInACommunityLanguage);
+        totalPoints += this.studiedInRegionalAustraliaPoints(config.studiedInRegionalAustralia);
+        totalPoints += this.partnerSkillQualificationPoints(config.partnerSkillQualifications);
+        totalPoints += this.professionalYearInAustraliaPoints(config.professionalYearInAustralia);
         return totalPoints;
     }
 
@@ -51,7 +53,7 @@ export default class {
         return qualifies ? 5 : 0;
     }
 
-    accreditedInCommunityLanguage(qualifies) {
+    accreditedInCommunityLanguagePoints(qualifies) {
         return qualifies ? 5 : 0;
     }
 
@@ -67,6 +69,7 @@ export default class {
         return qualifies ? 5 : 0;
     }
 
+    // TODO: find out if this is a one or many selection
     qualitificationPoints(qualificationLevel) {
         switch (qualificationLevel) {
         case QUALIFICATIONS.DoctorateDegree:

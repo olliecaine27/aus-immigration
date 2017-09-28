@@ -22,6 +22,7 @@ export default class {
         return totalPoints;
     }
 
+    // TODO: add console logs for calculated totals
     calculateAge(birthday, ageOnDate) {
         const ageDifMs = ageOnDate - birthday.getTime();
         const ageDate = new Date(ageDifMs); // miliseconds from epoch

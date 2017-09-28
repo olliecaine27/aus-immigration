@@ -5,6 +5,7 @@ import QUALIFICATIONS from './qualifications';
 // should it be less than 2?
 export default class {
 
+    // TODO: return object with points attached instead of just the number of points.
     calculatePoints(config, date) {
         let totalPoints = 0;
         const age = this.calculateAge(config.dob, date);

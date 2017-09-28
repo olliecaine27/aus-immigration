@@ -22,7 +22,6 @@ export default class {
         return totalPoints;
     }
 
-    // TODO: add console logs for calculated totals
     calculateAge(birthday, ageOnDate) {
         const ageDifMs = ageOnDate - birthday.getTime();
         const ageDate = new Date(ageDifMs); // miliseconds from epoch
@@ -66,10 +65,16 @@ export default class {
         return qualifies ? 5 : 0;
     }
 
+    /**
+     * Points based on qualification achieved
+     */
     professionalYearInAustraliaPoints(qualifies) {
         return qualifies ? 5 : 0;
     }
 
+    /**
+     * Points based on qualification achieved
+     */
     qualitificationPoints(qualificationLevel) {
         switch (qualificationLevel) {
         case QUALIFICATIONS.DoctorateDegree:
@@ -85,6 +90,9 @@ export default class {
         }
     }
 
+    /**
+     * Points based on age
+     */
     agePoints(age) {
         if (age < 18) return 0;
         if (age < 25) return 25;
@@ -94,6 +102,9 @@ export default class {
         return 0;
     }
 
+    /**
+     * Competency at the English language
+     */
     englishLevelPoints(englishLevel) {
         switch (englishLevel) {
         case ENGLISH_LEVEL.Competent:

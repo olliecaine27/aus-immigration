@@ -3,8 +3,14 @@ import QUALIFICATIONS from './qualifications';
 
 export default class {
 
-    constructor(config) {
-        this.config = config;
+    pointsOnDate(personInfo) {
+        // const age = this.calculateAge(this.config.dob, date);
+        // if (age < 18) return 0;
+        // if (age < 25) return 25;
+        // if (age < 33) return 30;
+        // if (age < 40) return 25;
+        // if (age < 45) return 15;
+        return 0;
     }
 
     calculateAge(birthday, ageOnDate) {
@@ -13,7 +19,7 @@ export default class {
         return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
 
-    skilledEmploymentInAustralia(years) {
+    skilledEmploymentInAustraliaPoints(years) {
         if (years < 1) return 0;
         if (years < 2) return 5;
         if (years < 4) return 10;
@@ -22,12 +28,36 @@ export default class {
         return 0;
     }
 
-    skilledEmploymentOutAustralia(years) {
+    skilledEmploymentOutAustraliaPoints(years) {
         if (years < 3) return 0;
         if (years < 4) return 5;
         if (years < 7) return 10;
         if (years < 10) return 15;
         return 0;
+    }
+
+    australianStudyPoints(qualifies) {
+        return qualifies ? 5 : 0;
+    }
+
+    specialistEducationQualificationPoints(qualifies) {
+        return qualifies ? 5 : 0;
+    }
+
+    accreditedInCommunityLanguage(qualifies) {
+        return qualifies ? 5 : 0;
+    }
+
+    studiedInRegionalAustraliaPoints(qualifies) {
+        return qualifies ? 5 : 0;
+    }
+
+    partnerSkillQualificationPoints(qualifies) {
+        return qualifies ? 5 : 0;
+    }
+
+    professionalYearInAustraliaPoints(qualifies) {
+        return qualifies ? 5 : 0;
     }
 
     qualitificationPoints(qualificationLevel) {
@@ -65,16 +95,6 @@ export default class {
         default:
             return 0;
         }
-    }
-
-    pointsOnDate(date) {
-        const age = this.calculateAge(this.config.dob, date);
-        if (age < 18) return 0;
-        if (age < 25) return 25;
-        if (age < 33) return 30;
-        if (age < 40) return 25;
-        if (age < 45) return 15;
-        return 0;
     }
 
 }

@@ -1,16 +1,23 @@
 import ENGLISH_LEVEL from './englishLevel';
 import QUALIFICATIONS from './qualifications';
 
+// TODO: look into bug around length of years.
+// should it be less than 2?
 export default class {
 
-    pointsOnDate(personInfo) {
-        // const age = this.calculateAge(this.config.dob, date);
+    calculatePoints(config, date) {
+        let totalPoints = 0;
+        const age = this.calculateAge(config.dob, date);
+        totalPoints += this.agePoints(age);
+        totalPoints += this.englishLevelPoints(config.englishLevel);
+        totalPoints += this.skilledEmploymentOutAustraliaPoints(config.skilledEmploymentLengthOutAustralia);
+        totalPoints += this.skilledEmploymentInAustraliaPoints(config.skilledEmploymentLengthInAustralia);
         // if (age < 18) return 0;
         // if (age < 25) return 25;
         // if (age < 33) return 30;
         // if (age < 40) return 25;
         // if (age < 45) return 15;
-        return 0;
+        return totalPoints;
     }
 
     calculateAge(birthday, ageOnDate) {
@@ -21,9 +28,9 @@ export default class {
 
     skilledEmploymentInAustraliaPoints(years) {
         if (years < 1) return 0;
-        if (years < 2) return 5;
-        if (years < 4) return 10;
-        if (years < 7) return 15;
+        if (years < 3) return 5;
+        if (years < 5) return 10;
+        if (years < 8) return 15;
         if (years < 10) return 20;
         return 0;
     }

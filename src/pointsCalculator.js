@@ -69,7 +69,6 @@ export default class {
         return qualifies ? 5 : 0;
     }
 
-    // TODO: find out if this is a one or many selection
     qualitificationPoints(qualificationLevel) {
         switch (qualificationLevel) {
         case QUALIFICATIONS.DoctorateDegree:

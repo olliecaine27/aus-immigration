@@ -1,7 +1,6 @@
 import ENGLISH_LEVEL from './englishLevel';
 import QUALIFICATIONS from './qualifications';
 
-// TODO: look into bug around length of years.
 export default class {
 
     calculatePoints(config, date = new Date()) {

@@ -15,7 +15,8 @@ describe('Calculate points', () => {
 			assert.equal(result.calculationDate.getMonth(), new Date().getMonth());
 			assert.equal(result.calculationDate.getFullYear(), new Date().getFullYear());
 		});
-	});
+	})
+
 	describe('When inland and overseas combined points exceed 20', () => {
 		it('Should be capped at 20 points', () => {
 			// arrange

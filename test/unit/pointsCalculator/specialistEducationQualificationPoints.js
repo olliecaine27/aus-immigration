@@ -11,6 +11,7 @@ describe('Specialist education qualification', () => {
 			assert.equal(result, 5);
 		})
 	})
+	
 	describe('Doesnt have a Masters degree by research or a Doctorate degree from an Australian educational institution that included at least two academic years in a relevant field.', () => {
 		it('Should return 5 points', () => {
 			let pointsCalculator = new PointsCalculator();

@@ -5,22 +5,59 @@ import QUALIFICATIONS from './qualifications';
 // should it be less than 2?
 export default class {
 
-    // TODO: return object with points attached instead of just the number of points.
-    calculatePoints(config, date) {
-        let totalPoints = 0;
-        const age = this.calculateAge(config.dob, date);
-        totalPoints += this.agePoints(age);
-        totalPoints += this.englishLevelPoints(config.englishLevel);
-        totalPoints += this.skilledEmploymentOutAustraliaPoints(config.skilledEmploymentLengthOutAustralia);
-        totalPoints += this.skilledEmploymentInAustraliaPoints(config.skilledEmploymentLengthInAustralia);
-        totalPoints += this.qualitificationPoints(config.qualification);
-        totalPoints += this.australianStudyPoints(config.australianStudyRequirement);
-        totalPoints += this.specialistEducationQualificationPoints(config.specialistEducationQualification);
-        totalPoints += this.accreditedInCommunityLanguagePoints(config.accreditedInACommunityLanguage);
-        totalPoints += this.studiedInRegionalAustraliaPoints(config.studiedInRegionalAustralia);
-        totalPoints += this.partnerSkillQualificationPoints(config.partnerSkillQualifications);
-        totalPoints += this.professionalYearInAustraliaPoints(config.professionalYearInAustralia);
-        return totalPoints;
+    calculatePoints(config, date = new Date()) {
+        const self = this;
+        return {
+            calculationDate: date,
+            ageOnDate: 22,
+            totalPoints() {
+                let totalPoints = 0;
+
+                if (config.dob) { totalPoints += self.agePoints(self.calculateAge(config.dob, date)); }
+
+                if (config.englishLevel) { totalPoints += self.englishLevelPoints(config.englishLevel); }
+
+                let skillPoints = 0;
+                if (config.skilledEmploymentLengthOutAustralia) {
+                    skillPoints += self.skilledEmploymentOutAustraliaPoints(config.skilledEmploymentLengthOutAustralia);
+                }
+                if (config.skilledEmploymentLengthInAustralia) {
+                    skillPoints += self.skilledEmploymentInAustraliaPoints(config.skilledEmploymentLengthInAustralia);
+                }
+                if (skillPoints > 20) { skillPoints = 20; }
+                totalPoints += skillPoints;
+
+                if (config.qualification) {
+                    totalPoints += self.qualitificationPoints(config.qualification);
+                }
+
+                if (config.australianStudyRequirement) {
+                    totalPoints += self.australianStudyPoints(config.australianStudyRequirement);
+                }
+
+                if (config.specialistEducationQualification) {
+                    totalPoints += self.specialistEducationQualificationPoints(config.specialistEducationQualification);
+                }
+
+                if (config.accreditedInACommunityLanguage) {
+                    totalPoints += self.accreditedInCommunityLanguagePoints(config.accreditedInACommunityLanguage);
+                }
+
+                if (config.studiedInRegionalAustralia) {
+                    totalPoints += self.studiedInRegionalAustraliaPoints(config.studiedInRegionalAustralia);
+                }
+
+                if (config.partnerSkillQualifications) {
+                    totalPoints += self.partnerSkillQualificationPoints(config.partnerSkillQualifications);
+                }
+
+                if (config.professionalYearInAustralia) {
+                    totalPoints += self.professionalYearInAustraliaPoints(config.professionalYearInAustralia);
+                }
+
+                return totalPoints;
+            }
+        };
     }
 
     calculateAge(birthday, ageOnDate) {

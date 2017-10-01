@@ -41,4 +41,15 @@ describe('Skilled employment outside Australia in the last 10 years', () => {
 			assert.equal(result, 15);
 		})
 	})
+
+	describe('More than 10 years', () => {
+		it('Should return 20 points', () => {
+			// TODO: verify this scenario as the official points table doesn't include > 10ys
+			let pointsCalculator = new PointsCalculator();
+
+			let result = pointsCalculator.skilledEmploymentOutAustraliaPoints(15);
+
+			assert.equal(result, 15);
+		})
+	})
 })

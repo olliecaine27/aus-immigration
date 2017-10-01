@@ -2,6 +2,16 @@ import {assert} from 'chai';
 import PointsCalculator from '../../../src/pointsCalculator';
 
 describe('Age points', () => {
+	describe('As a 16 year old', () => {
+		it('Should return 0 points', () => {
+			let pointsCalculator = new PointsCalculator();
+
+			let result = pointsCalculator.agePoints(16);
+
+			assert.equal(result, 0);
+		})
+	})
+
 	describe('18-24 years old', () => {
 		it('Should return 25 points', () => {
 			let pointsCalculator = new PointsCalculator();

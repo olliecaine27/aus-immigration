@@ -61,8 +61,9 @@ export default class {
     }
 
     calculateAge(birthday, ageOnDate) {
+        // TODO: refactor
         const ageDifMs = ageOnDate - birthday.getTime();
-        const ageDate = new Date(ageDifMs); // miliseconds from epoch
+        const ageDate = new Date(ageDifMs);
         return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
 
@@ -71,16 +72,14 @@ export default class {
         if (years < 3) return 5;
         if (years < 5) return 10;
         if (years < 8) return 15;
-        if (years < 10) return 20;
-        return 0;
+        return 20;
     }
 
     skilledEmploymentOutAustraliaPoints(years) {
         if (years < 3) return 0;
         if (years < 4) return 5;
         if (years < 7) return 10;
-        if (years < 10) return 15;
-        return 0;
+        return 15;
     }
 
     australianStudyPoints(qualifies) {

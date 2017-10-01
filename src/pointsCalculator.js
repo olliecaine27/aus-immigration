@@ -1,6 +1,9 @@
 import ENGLISH_LEVEL from './englishLevel';
 import QUALIFICATIONS from './qualifications';
 
+// TODO: decide if these methods even need to belong in a class. Do we make the methods static
+// (as they don't use "this") or do I just move them to a classless file simply containing the methods?
+// Maybe make results object a class because it does contain state (and therefore uses 'this').
 export default class {
 
     calculatePoints(config, date = new Date()) {
@@ -71,9 +74,8 @@ export default class {
     }
 
     calculateAge(birthday, ageOnDate) {
-        // TODO: refactor
-        const ageDifMs = ageOnDate - birthday.getTime();
-        const ageDate = new Date(ageDifMs);
+        const ageDifference = ageOnDate - birthday.getTime();
+        const ageDate = new Date(ageDifference);
         return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
 

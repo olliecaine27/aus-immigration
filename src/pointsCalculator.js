@@ -2,7 +2,6 @@ import ENGLISH_LEVEL from './englishLevel';
 import QUALIFICATIONS from './qualifications';
 
 // TODO: look into bug around length of years.
-// should it be less than 2?
 export default class {
 
     calculatePoints(config, date = new Date()) {
@@ -60,73 +59,6 @@ export default class {
         };
     }
 
-    calculateAge(birthday, ageOnDate) {
-        // TODO: refactor
-        const ageDifMs = ageOnDate - birthday.getTime();
-        const ageDate = new Date(ageDifMs);
-        return Math.abs(ageDate.getUTCFullYear() - 1970);
-    }
-
-    skilledEmploymentInAustraliaPoints(years) {
-        if (years < 1) return 0;
-        if (years < 3) return 5;
-        if (years < 5) return 10;
-        if (years < 8) return 15;
-        return 20;
-    }
-
-    skilledEmploymentOutAustraliaPoints(years) {
-        if (years < 3) return 0;
-        if (years < 4) return 5;
-        if (years < 7) return 10;
-        return 15;
-    }
-
-    australianStudyPoints(qualifies) {
-        return qualifies ? 5 : 0;
-    }
-
-    specialistEducationQualificationPoints(qualifies) {
-        return qualifies ? 5 : 0;
-    }
-
-    accreditedInCommunityLanguagePoints(qualifies) {
-        return qualifies ? 5 : 0;
-    }
-
-    studiedInRegionalAustraliaPoints(qualifies) {
-        return qualifies ? 5 : 0;
-    }
-
-    partnerSkillQualificationPoints(qualifies) {
-        return qualifies ? 5 : 0;
-    }
-
-    /**
-     * Points based on qualification achieved
-     */
-    professionalYearInAustraliaPoints(qualifies) {
-        return qualifies ? 5 : 0;
-    }
-
-    /**
-     * Points based on qualification achieved
-     */
-    qualitificationPoints(qualificationLevel) {
-        switch (qualificationLevel) {
-        case QUALIFICATIONS.DoctorateDegree:
-            return 20;
-        case QUALIFICATIONS.BachelorDegree:
-            return 15;
-        case QUALIFICATIONS.DiplomaOrTradeQualification:
-            return 10;
-        case QUALIFICATIONS.NominatedSkilledOccupation:
-            return 10;
-        default:
-            return 0;
-        }
-    }
-
     /**
      * Points based on age
      */
@@ -139,20 +71,100 @@ export default class {
         return 0;
     }
 
+    calculateAge(birthday, ageOnDate) {
+        // TODO: refactor
+        const ageDifMs = ageOnDate - birthday.getTime();
+        const ageDate = new Date(ageDifMs);
+        return Math.abs(ageDate.getUTCFullYear() - 1970);
+    }
+
     /**
      * Competency at the English language
      */
     englishLevelPoints(englishLevel) {
         switch (englishLevel) {
-        case ENGLISH_LEVEL.Competent:
-            return 0;
-        case ENGLISH_LEVEL.Proficient:
-            return 10;
-        case ENGLISH_LEVEL.Superior:
-            return 20;
-        default:
-            return 0;
+            case ENGLISH_LEVEL.Competent: return 0;
+            case ENGLISH_LEVEL.Proficient: return 10;
+            case ENGLISH_LEVEL.Superior: return 20;
+            default: return 0;
         }
     }
 
+    /**
+     * Skilled employment in nominated or closely related to nomimated profession
+     */
+    skilledEmploymentOutAustraliaPoints(years) {
+        if (years < 3) return 0;
+        if (years < 4) return 5;
+        if (years < 7) return 10;
+        return 15;
+    }
+
+    /**
+     * Skilled employment in nominated or closely related to nomimated profession
+     */
+    skilledEmploymentInAustraliaPoints(years) {
+        if (years < 1) return 0;
+        if (years < 3) return 5;
+        if (years < 5) return 10;
+        if (years < 8) return 15;
+        return 20;
+    }
+
+    /**
+     * Points based on qualification achieved
+     */
+    qualitificationPoints(qualificationLevel) {
+        switch (qualificationLevel) {
+            case QUALIFICATIONS.DoctorateDegree: return 20;
+            case QUALIFICATIONS.BachelorDegree: return 15;
+            case QUALIFICATIONS.DiplomaOrTradeQualification: return 10;
+            case QUALIFICATIONS.NominatedSkilledOccupation: return 10;
+            default: return 0;
+        }
+    }
+
+    /**
+    * At least one degree, diploma or trade qualification from an Australian educational
+    * institution that meets the Australian study requirement.
+    */
+    australianStudyPoints(qualifies) {
+        return qualifies ? 5 : 0;
+    }
+
+    /**
+    * A Masters degree by research or a Doctorate degree from an Australian educational
+    * institution that included at least two academic years in a relevant field.
+    */
+    specialistEducationQualificationPoints(qualifies) {
+        return qualifies ? 5 : 0;
+    }
+
+    /**
+    * TODO: get from lawyer meeting
+    */
+    accreditedInCommunityLanguagePoints(qualifies) {
+        return qualifies ? 5 : 0;
+    }
+
+    /**
+    * TODO: get from lawyer meeting
+    */
+    studiedInRegionalAustraliaPoints(qualifies) {
+        return qualifies ? 5 : 0;
+    }
+
+    /**
+    * TODO: get from lawyer meeting
+    */
+    partnerSkillQualificationPoints(qualifies) {
+        return qualifies ? 5 : 0;
+    }
+
+    /**
+     * Points based on qualification achieved
+     */
+    professionalYearInAustraliaPoints(qualifies) {
+        return qualifies ? 5 : 0;
+    }
 }

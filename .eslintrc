@@ -11,6 +11,6 @@
     "object-curly-spacing"      : [2, "always"],
     "comma-dangle"              : "off",
     "no-mixed-spaces-and-tabs"  : ["error"],
-    "indent"                    : [2, 4]
+    "indent"                    : [2, 4, { "SwitchCase": 1 }]
   }
 }

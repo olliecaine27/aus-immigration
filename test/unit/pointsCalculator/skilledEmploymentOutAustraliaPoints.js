@@ -8,7 +8,7 @@ describe('Skilled employment outside Australia in the last 10 years', () => {
 
 			let result = pointsCalculator.skilledEmploymentOutAustraliaPoints(2);
 
-			assert.equal(result, 0, 'Result not 0');
+			assert.equal(result, 0);
 		})
 	})
 
@@ -18,7 +18,7 @@ describe('Skilled employment outside Australia in the last 10 years', () => {
 
 			let result = pointsCalculator.skilledEmploymentOutAustraliaPoints(3.5);
 
-			assert.equal(result, 5, 'Result not 5');
+			assert.equal(result, 5);
 		})
 	})
 
@@ -28,7 +28,7 @@ describe('Skilled employment outside Australia in the last 10 years', () => {
 
 			let result = pointsCalculator.skilledEmploymentOutAustraliaPoints(6);
 
-			assert.equal(result, 10, 'Result not 10');
+			assert.equal(result, 10);
 		})
 	})
 
@@ -38,7 +38,7 @@ describe('Skilled employment outside Australia in the last 10 years', () => {
 
 			let result = pointsCalculator.skilledEmploymentOutAustraliaPoints(9);
 
-			assert.equal(result, 15, 'Result not 15');
+			assert.equal(result, 15);
 		})
 	})
 })

@@ -9,7 +9,7 @@ describe('Qualification points', () => {
 
 			let result = pointsCalculator.qualitificationPoints(QUALIFICATIONS.DoctorateDegree);
 
-			assert.equal(result, 20, 'Result not 20');
+			assert.equal(result, 20);
 		})
 	})
 
@@ -19,7 +19,7 @@ describe('Qualification points', () => {
 
 			let result = pointsCalculator.qualitificationPoints(QUALIFICATIONS.BachelorDegree);
 
-			assert.equal(result, 15, 'Result not 15');
+			assert.equal(result, 15);
 		})
 	})
 
@@ -29,7 +29,7 @@ describe('Qualification points', () => {
 
 			let result = pointsCalculator.qualitificationPoints(QUALIFICATIONS.DiplomaOrTradeQualification);
 
-			assert.equal(result, 10, 'Result not 10');
+			assert.equal(result, 10);
 		})
 	})
 
@@ -39,7 +39,7 @@ describe('Qualification points', () => {
 
 			let result = pointsCalculator.qualitificationPoints(QUALIFICATIONS.NominatedSkilledOccupation);
 
-			assert.equal(result, 10, 'Result not 10');
+			assert.equal(result, 10);
 		})
 	})
 })

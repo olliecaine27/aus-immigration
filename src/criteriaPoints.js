@@ -30,8 +30,8 @@ export function englishLevelPoints(englishLevel) {
  */
 export function skilledEmploymentOutAustraliaPoints(years) {
     if (years < 3) return 0;
-    if (years < 4) return 5;
-    if (years < 7) return 10;
+    if (years < 5) return 5;
+    if (years < 8) return 10;
     return 15;
 }
 

@@ -1,72 +1,65 @@
 import * as criteriaPoints from './criteriaPoints';
 
-// TODO: decide if these methods even need to belong in a class. Do we make the methods static
-// (as they don't use "this") or do I just move them to a classless file simply containing the methods?
-// Maybe make results object a class because it does contain state (and therefore uses 'this').
-export default class {
+export function calculateAge(birthday, ageOnDate) {
+    const ageDifference = ageOnDate - birthday.getTime();
+    const ageDate = new Date(ageDifference);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
 
-    calculatePoints(config, date = new Date()) {
-        const self = this;
-        return {
-            calculationDate: date,
-            ageOnDate: 22,
-            totalPoints() {
-                let totalPoints = 0;
+export function calculatePoints(applicant, date = new Date()) {
+    return {
+        calculationDate: date,
+        // ageOnDate: calculateAge(applicant.dob, date),
+        totalPoints() {
+            let totalPoints = 0;
 
-                if (config.dob) { totalPoints += criteriaPoints.agePoints(self.calculateAge(config.dob, date)); }
+            if (applicant.dob) { totalPoints += criteriaPoints.agePoints(calculateAge(applicant.dob, date)); }
 
-                if (config.englishLevel) { totalPoints += criteriaPoints.englishLevelPoints(config.englishLevel); }
+            if (applicant.englishLevel) { totalPoints += criteriaPoints.englishLevelPoints(applicant.englishLevel); }
 
-                let skillPoints = 0;
-                if (config.skilledEmploymentLengthOutAustralia) {
-                    skillPoints +=
-                        criteriaPoints.skilledEmploymentOutAustraliaPoints(config.skilledEmploymentLengthOutAustralia);
-                }
-                if (config.skilledEmploymentLengthInAustralia) {
-                    skillPoints +=
-                        criteriaPoints.skilledEmploymentInAustraliaPoints(config.skilledEmploymentLengthInAustralia);
-                }
-                if (skillPoints > 20) { skillPoints = 20; }
-                totalPoints += skillPoints;
-
-                if (config.qualification) {
-                    totalPoints += criteriaPoints.qualitificationPoints(config.qualification);
-                }
-
-                if (config.australianStudyRequirement) {
-                    totalPoints += criteriaPoints.australianStudyRequirementPoints(config.australianStudyRequirement);
-                }
-
-                if (config.specialistEducationQualification) {
-                    totalPoints +=
-                        criteriaPoints.specialistEducationQualificationPoints(config.specialistEducationQualification);
-                }
-
-                if (config.accreditedInACommunityLanguage) {
-                    totalPoints +=
-                        criteriaPoints.accreditedInCommunityLanguagePoints(config.accreditedInACommunityLanguage);
-                }
-
-                if (config.studiedInRegionalAustralia) {
-                    totalPoints += criteriaPoints.studiedInRegionalAustraliaPoints(config.studiedInRegionalAustralia);
-                }
-
-                if (config.partnerSkillQualifications) {
-                    totalPoints += criteriaPoints.partnerSkillQualificationPoints(config.partnerSkillQualifications);
-                }
-
-                if (config.professionalYearInAustralia) {
-                    totalPoints += criteriaPoints.professionalYearInAustraliaPoints(config.professionalYearInAustralia);
-                }
-
-                return totalPoints;
+            let skillPoints = 0;
+            if (applicant.skilledEmploymentLengthOutAustralia) {
+                skillPoints +=
+                    criteriaPoints.skilledEmploymentOutAustraliaPoints(applicant.skilledEmploymentLengthOutAustralia);
             }
-        };
-    }
+            if (applicant.skilledEmploymentLengthInAustralia) {
+                skillPoints +=
+                    criteriaPoints.skilledEmploymentInAustraliaPoints(applicant.skilledEmploymentLengthInAustralia);
+            }
+            if (skillPoints > 20) { skillPoints = 20; }
+            totalPoints += skillPoints;
 
-    calculateAge(birthday, ageOnDate) {
-        const ageDifference = ageOnDate - birthday.getTime();
-        const ageDate = new Date(ageDifference);
-        return Math.abs(ageDate.getUTCFullYear() - 1970);
-    }
+            if (applicant.qualification) {
+                totalPoints += criteriaPoints.qualitificationPoints(applicant.qualification);
+            }
+
+            if (applicant.australianStudyRequirement) {
+                totalPoints += criteriaPoints.australianStudyRequirementPoints(applicant.australianStudyRequirement);
+            }
+
+            if (applicant.specialistEducationQualification) {
+                totalPoints +=
+                    criteriaPoints.specialistEducationQualificationPoints(applicant.specialistEducationQualification);
+            }
+
+            if (applicant.accreditedInACommunityLanguage) {
+                totalPoints +=
+                    criteriaPoints.accreditedInCommunityLanguagePoints(applicant.accreditedInACommunityLanguage);
+            }
+
+            if (applicant.studiedInRegionalAustralia) {
+                totalPoints += criteriaPoints.studiedInRegionalAustraliaPoints(applicant.studiedInRegionalAustralia);
+            }
+
+            if (applicant.partnerSkillQualifications) {
+                totalPoints += criteriaPoints.partnerSkillQualificationPoints(applicant.partnerSkillQualifications);
+            }
+
+            if (applicant.professionalYearInAustralia) {
+                totalPoints += criteriaPoints.professionalYearInAustraliaPoints(applicant.professionalYearInAustralia);
+            }
+
+            return totalPoints;
+        }
+    };
 }

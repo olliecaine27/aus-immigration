@@ -21,7 +21,7 @@ describe('Calculate points', () => {
 		        skilledEmploymentLengthOutAustralia: 9,
 		        skilledEmploymentLengthInAustralia: 9,
 		    }
-			
+
 			let result = pointsCalculator.calculatePoints(config);
 
 			assert.equal(result.totalPoints(), 20);

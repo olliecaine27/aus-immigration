@@ -1,12 +1,10 @@
 import {assert} from 'chai';
-import PointsCalculator from '../../../src/pointsCalculator';
+import {partnerSkillQualificationPoints} from '../../../src/criteriaPoints';
 
 describe('Partner skill qualification points', () => {
 	describe('Partner skill qualifications', () => {
 		it('Should return 5 points', () => {
-			let pointsCalculator = new PointsCalculator();
-
-			let result = pointsCalculator.partnerSkillQualificationPoints(true);
+			let result = partnerSkillQualificationPoints(true);
 
 			assert.equal(result, 5);
 		})

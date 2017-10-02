@@ -1,10 +1,10 @@
 import {assert} from 'chai';
-import {calculatePoints} from '../../../src/pointsCalculator';
+import {analyseApplicant} from '../../../src/pointsCalculator';
 
 describe('Calculate points', () => {
 	describe('When calculating points', () => {
 		it('Should default to todays date', () => {
-			let result = calculatePoints()
+			let result = analyseApplicant()
 
 			assert.equal(result.calculationDate.getDate(), new Date().getDate());
 			assert.equal(result.calculationDate.getMonth(), new Date().getMonth());
@@ -14,12 +14,12 @@ describe('Calculate points', () => {
 
 	describe('When inland and overseas combined points exceed 20', () => {
 		it('Should be capped at 20 points', () => {
-		    const config = {
+		    const applicantDetails = {
 		        skilledEmploymentLengthOutAustralia: 9,
 		        skilledEmploymentLengthInAustralia: 9,
 		    }
 
-			let result = calculatePoints(config);
+			let result = analyseApplicant(applicantDetails);
 
 			assert.equal(result.totalPoints(), 20);
 		})

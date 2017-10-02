@@ -2,8 +2,10 @@
 
 I built this project to both test the process of building and deploying an NPM package but also to make it easier for people to calculate their total immigration points set out by the Department of Immigration and Border Protection, both now and in the future (as some variables change based on time).
 
-The official points list set by the Australian Government: 
+The official points list set by the Australian Government:
 https://www.border.gov.au/Trav/Visa-1/189-?modal=/visas/supporting/Pages/skilled/the-points-table.aspx
+and
+http://www.visabureau.com/australia/immigration-points-test.aspx
 
 ## Features
 
@@ -25,4 +27,3 @@ https://www.border.gov.au/Trav/Visa-1/189-?modal=/visas/supporting/Pages/skilled
 
 ## Installation
 Just clone this repo and remove `.git` folder.
-

@@ -6,10 +6,14 @@ export function calculateAge(birthday, ageOnDate) {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
-export function calculatePoints(applicant, date = new Date()) {
+export function analyseApplicant(applicant, date = new Date()) {
+    // TODO: refactor this so it returns a report object containing:
+    // 1. the points acquired per criteria
+    // 2. a method to tally them all up
+    // 3. a array of unclaimed points
+
     return {
         calculationDate: date,
-        // ageOnDate: calculateAge(applicant.dob, date),
         totalPoints() {
             let totalPoints = 0;
 

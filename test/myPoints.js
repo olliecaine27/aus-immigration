@@ -1,9 +1,9 @@
 import {assert, expect} from 'chai';
-import {calculatePoints} from '../src/pointsCalculator';
+import {analyseApplicant} from '../src/pointsCalculator';
 import ENGLISH_LEVEL from './../src/constants/englishLevels';
 import QUALIFICATIONS from './../src/constants/qualifications';
 
-describe.skip('My total points', () => {
+describe('My total points', () => {
 
     const config = {
         dob: new Date(1985, 11, 27),
@@ -19,20 +19,13 @@ describe.skip('My total points', () => {
         professionalYearInAustralia: false
     }
 
-	it('Now', () => {
-        let result = calculatePoints(config, new Date())
-
-        expect(result).to.equal(85);
-	})
-
-    it('Future', () => {
+    it('From today', () => {
 		for (var i = 0; i < 30; i++) {
-            // TODO: remove year and use dateCheck.getYear() - better readability
-			let year = 2017 + i
-			let dateCheck = new Date(year, 11, 27)
+			let dateCheck = new Date(2017 + i, 11, 27)
             --config.skilledEmploymentLengthOutAustralia
             ++config.skilledEmploymentLengthInAustralia
-			console.log(`My total points on year ${year}:`, calculatePoints(config, dateCheck).totalPoints())
+            let totalPoints = analyseApplicant(config, dateCheck).totalPoints()
+			console.log(`My total points in ${dateCheck.getFullYear()}: ${totalPoints}`)
 		}
 	})
 

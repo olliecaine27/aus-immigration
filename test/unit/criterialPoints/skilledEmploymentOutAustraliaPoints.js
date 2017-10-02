@@ -35,8 +35,7 @@ describe('Skilled employment outside Australia in the last 10 years', () => {
 	})
 
 	describe('More than 10 years', () => {
-		it.skip('Should return 20 points', () => {
-			// TODO: verify this scenario as the official points table doesn't include > 10ys
+		it('Should return 20 points', () => {
 			let result = skilledEmploymentOutAustraliaPoints(15);
 
 			assert.equal(result, 15);

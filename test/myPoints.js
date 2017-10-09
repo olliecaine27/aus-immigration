@@ -3,38 +3,38 @@ import {createPointsReport} from '../src/pointsCalculator';
 import ENGLISH_LEVEL from './../src/constants/englishLevels';
 import QUALIFICATIONS from './../src/constants/qualifications';
 
-describe('My total points', () => {
+describe.only('My total points', () => {
 
-    const config = {
-        dob: new Date(1985, 11, 27),
+    const applicantInfo = {
+        dob: new Date(1985, 10, 27),
         englishLevel: ENGLISH_LEVEL.Superior,
         careerHistory: [
             {
                 // Technophobia / Web developer
                 start: new Date(2007, 6),
                 end: new Date(2013, 11),
-                inAppliedOccupation: true,
+                inAppliedOccupation: false,
                 inAustralia: false
             },
             {
                 // Lavender / Interaction developer
                 start: new Date(2013, 1),
                 end: new Date(2013, 5),
-                inAppliedOccupation: true,
+                inAppliedOccupation: false,
                 inAustralia: true
             },
             {
                 // Orchard Marketing / UI Developer
                 start: new Date(2013, 6),
                 end: new Date(2013, 11),
-                inAppliedOccupation: true,
+                inAppliedOccupation: false,
                 inAustralia: true
             },
             {
                 // The Wine Quarter / UI team lead
                 start: new Date(2013, 11, 23),
                 end: new Date(2016, 10, 9),
-                inAppliedOccupation: true,
+                inAppliedOccupation: false,
                 inAustralia: true
             }
         ],
@@ -66,11 +66,11 @@ describe('My total points', () => {
 
     it('From today', () => {
 		for (var i = 0; i < 30; i++) {
-			let dateCheck = new Date(2017 + i, 11, 27)
-            --config.skilledEmploymentLengthOutAustralia
-            ++config.skilledEmploymentLengthInAustralia
-            let totalPoints = createPointsReport(config, dateCheck).totalPoints()
-			console.log(`My total points in ${dateCheck.getFullYear()}: ${totalPoints}`)
+			let dateCheck = new Date(applicantInfo.dob.getFullYear() + i, 10, 27)
+            let report = createPointsReport(applicantInfo, dateCheck)
+
+            console.log(`Total points on birthday in ${dateCheck.getFullYear()}: ${report.tallyPoints()}`)
+            // console.log(report.pointsCriteria)
 		}
 	})
 

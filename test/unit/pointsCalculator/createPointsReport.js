@@ -10,6 +10,15 @@ describe('createPointsReport', () => {
 			assert.equal(result.calculationDate.getMonth(), new Date().getMonth());
 			assert.equal(result.calculationDate.getFullYear(), new Date().getFullYear());
 		});
+
+		it('Should return age points', () => {
+			let dob = new Date(1985, 10, 27);
+			let dateCheck = new Date(2017, 9, 9)
+
+			let result = createPointsReport({dob, dateCheck})
+
+			assert.equal(result.tallyPoints(), 30);
+		});
 	})
 
 	describe('When inland and overseas combined points exceed 20', () => {
@@ -33,7 +42,7 @@ describe('createPointsReport', () => {
 
 			let result = createPointsReport(applicantDetails);
 
-			assert.equal(result.totalPoints(), 20);
+			assert.equal(result.tallyPoints(), 20);
 		})
 	})
 })

@@ -11,7 +11,7 @@ export function yearsBetweenDates(firstDate, secondDate) {
 export function calculateSkilledEmploymentYears(careerHistory, countingInAustralia, years = 10) {
     let total = 0;
     for (const job of careerHistory) {
-        if (job.inAustralia === countingInAustralia) {
+        if (job.inAustralia === countingInAustralia && job.inAppliedOccupation) {
             total += yearsBetweenDates(job.start, job.end);
         }
     }
@@ -34,8 +34,11 @@ export function createPointsReport(applicant, date = new Date()) {
     };
 
     if (applicant.dob) {
-        pointsCriteria.agePoints
-            = criteriaPoints.agePoints(daysBetweenDates(applicant.dob, date));
+        // console.log('ollie', 'applicant.dob', applicant.dob);
+        const age = yearsBetweenDates(applicant.dob, date);
+        // console.log('ollie', 'age', age);
+        pointsCriteria.agePoints = criteriaPoints.agePoints(age);
+        // console.log('ollie', 'criteriaPoints.agePoints(age)', criteriaPoints.agePoints(age));
     }
 
     if (applicant.englishLevel) {
@@ -91,14 +94,9 @@ export function createPointsReport(applicant, date = new Date()) {
     return {
         calculationDate: date,
         pointsCriteria,
-        totalPoints() {
+        tallyPoints() {
             let total = 0;
-            for (const points in this.pointsCriteria) {
-                // skilledEmploymentInAustraliaPoints
-                // skilledEmploymentOutAustraliaPoints
-                // if (skillPoints > 20) { skillPoints = 20; }
-                total += pointsCriteria[points];
-            }
+            for (const points in this.pointsCriteria) { total += pointsCriteria[points]; }
 
             const skillTotal =
                 this.pointsCriteria.skilledEmploymentInAustraliaPoints

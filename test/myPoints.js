@@ -3,13 +3,41 @@ import {createPointsReport} from '../src/pointsCalculator';
 import ENGLISH_LEVEL from './../src/constants/englishLevels';
 import QUALIFICATIONS from './../src/constants/qualifications';
 
-describe('My total points', () => {
+describe.only('My total points', () => {
 
     const config = {
         dob: new Date(1985, 11, 27),
         englishLevel: ENGLISH_LEVEL.Superior,
-        skilledEmploymentLengthOutAustralia: 6,
-        skilledEmploymentLengthInAustralia: 4,
+        careerHistory: [
+            {
+                // Technophobia / Web developer
+                start: new Date(2007, 6),
+                end: new Date(2013, 11),
+                inAppliedOccupation: true,
+                inAustralia: false
+            },
+            {
+                // Lavender / Interaction developer
+                start: new Date(2013, 1),
+                end: new Date(2013, 5),
+                inAppliedOccupation: true,
+                inAustralia: true
+            },
+            {
+                // Orchard Marketing / UI Developer
+                start: new Date(2013, 6),
+                end: new Date(2013, 11),
+                inAppliedOccupation: true,
+                inAustralia: true
+            },
+            {
+                // The Wine Quarter / UI team lead
+                start: new Date(2013, 11, 23),
+                end: new Date(2016, 10, 9),
+                inAppliedOccupation: true,
+                inAustralia: true
+            }
+        ],
         qualification: QUALIFICATIONS.BachelorDegree,
         // One or more degrees, diplomas or trade qualifications awarded by an Australian
         // educational institution and meet the Australian Study Requirement.
@@ -33,7 +61,7 @@ describe('My total points', () => {
         partnerSkillQualifications: false,
         // You can receive five points for having completed a Professional Year in Australia in the four years before you are invited to apply.
         // Your Professional Year course must have been in your nominated skilled occupation or a closely related skilled occupation. The course must have lasted for a period totalling at least 12 months.
-        professionalYearInAustralia: false
+        professionalYearInAustralia: false,
     }
 
     it('From today', () => {

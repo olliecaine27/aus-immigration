@@ -15,8 +15,20 @@ describe('createPointsReport', () => {
 	describe('When inland and overseas combined points exceed 20', () => {
 		it('Should be capped at 20 points', () => {
 		    const applicantDetails = {
-		        skilledEmploymentLengthOutAustralia: 9,
-		        skilledEmploymentLengthInAustralia: 9,
+				careerHistory: [
+		            {
+		                start: new Date(2000, 1),
+		                end: new Date(2020, 1),
+		                inAppliedOccupation: true,
+		                inAustralia: false
+		            },
+		            {
+						start: new Date(2000, 1),
+		                end: new Date(2020, 1),
+		                inAppliedOccupation: true,
+		                inAustralia: true
+		            }
+		        ]
 		    }
 
 			let result = createPointsReport(applicantDetails);

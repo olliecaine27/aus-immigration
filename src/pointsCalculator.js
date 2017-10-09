@@ -1,16 +1,18 @@
 import * as criteriaPoints from './criteriaPoints';
 
-export function calculateAge(birthday, ageOnDate) {
-    const ageDifference = ageOnDate - birthday.getTime();
-    const ageDate = new Date(ageDifference);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
+export function daysBetweenDates(firstDate, secondDate) {
+    return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / 86400000));
 }
 
-export function calculateSkilledEmployment(careerHistory, countingInAustralia, years = 10) {
+export function yearsBetweenDates(firstDate, secondDate) {
+    return daysBetweenDates(firstDate, secondDate) / 365;
+}
+
+export function calculateSkilledEmploymentYears(careerHistory, countingInAustralia, years = 10) {
     let total = 0;
     for (const job of careerHistory) {
         if (job.inAustralia === countingInAustralia) {
-            total += calculateAge(job.start, job.end);
+            total += yearsBetweenDates(job.start, job.end);
         }
     }
     return total;
@@ -27,21 +29,23 @@ export function createPointsReport(applicant, date = new Date()) {
         totalPoints() {
             let totalPoints = 0;
 
-            if (applicant.dob) { totalPoints += criteriaPoints.agePoints(calculateAge(applicant.dob, date)); }
+            if (applicant.dob) { totalPoints += criteriaPoints.agePoints(daysBetweenDates(applicant.dob, date)); }
 
             if (applicant.englishLevel) { totalPoints += criteriaPoints.englishLevelPoints(applicant.englishLevel); }
 
-            let skillPoints = 0;
-            if (applicant.skilledEmploymentLengthOutAustralia) {
-                skillPoints +=
-                    criteriaPoints.skilledEmploymentOutAustraliaPoints(applicant.skilledEmploymentLengthOutAustralia);
+            if (applicant.careerHistory) {
+                let skillPoints = 0;
+
+                const skilledYearsInsideOz = calculateSkilledEmploymentYears(applicant.careerHistory, true);
+                skillPoints += criteriaPoints.skilledEmploymentInAustraliaPoints(skilledYearsInsideOz);
+
+                const skilledYearsOutsideOz = calculateSkilledEmploymentYears(applicant.careerHistory, false);
+                skillPoints += criteriaPoints.skilledEmploymentOutAustraliaPoints(skilledYearsOutsideOz);
+
+                if (skillPoints > 20) { skillPoints = 20; }
+
+                totalPoints += skillPoints;
             }
-            if (applicant.skilledEmploymentLengthInAustralia) {
-                skillPoints +=
-                    criteriaPoints.skilledEmploymentInAustraliaPoints(applicant.skilledEmploymentLengthInAustralia);
-            }
-            if (skillPoints > 20) { skillPoints = 20; }
-            totalPoints += skillPoints;
 
             if (applicant.qualification) {
                 totalPoints += criteriaPoints.qualitificationPoints(applicant.qualification);

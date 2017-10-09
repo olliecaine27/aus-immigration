@@ -1,10 +1,10 @@
 import {assert} from 'chai';
-import {analyseApplicant} from '../../../src/pointsCalculator';
+import {createPointsReport} from '../../../src/pointsCalculator';
 
-describe('Calculate points', () => {
+describe('createPointsReport', () => {
 	describe('When calculating points', () => {
 		it('Should default to todays date', () => {
-			let result = analyseApplicant()
+			let result = createPointsReport()
 
 			assert.equal(result.calculationDate.getDate(), new Date().getDate());
 			assert.equal(result.calculationDate.getMonth(), new Date().getMonth());
@@ -19,7 +19,7 @@ describe('Calculate points', () => {
 		        skilledEmploymentLengthInAustralia: 9,
 		    }
 
-			let result = analyseApplicant(applicantDetails);
+			let result = createPointsReport(applicantDetails);
 
 			assert.equal(result.totalPoints(), 20);
 		})

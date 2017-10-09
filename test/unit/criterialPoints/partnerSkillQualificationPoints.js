@@ -1,7 +1,7 @@
 import {assert} from 'chai';
 import {partnerSkillQualificationPoints} from '../../../src/criteriaPoints';
 
-describe('Partner skill qualification points', () => {
+describe('partnerSkillQualificationPoints', () => {
 	describe('Partner skill qualifications', () => {
 		it('Should return 5 points', () => {
 			let result = partnerSkillQualificationPoints(true);

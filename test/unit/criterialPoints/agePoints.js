@@ -1,7 +1,7 @@
 import {assert} from 'chai';
 import {agePoints} from '../../../src/criteriaPoints';
 
-describe('Age points', () => {
+describe('agePoints', () => {
 	describe('As a 16 year old', () => {
 		it('Should return 0 points', () => {
 			let result = agePoints(16);

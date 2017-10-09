@@ -6,7 +6,17 @@ export function calculateAge(birthday, ageOnDate) {
     return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
-export function analyseApplicant(applicant, date = new Date()) {
+export function calculateSkilledEmployment(careerHistory, countingInAustralia, years = 10) {
+    let total = 0;
+    for (const job of careerHistory) {
+        if (job.inAustralia === countingInAustralia) {
+            total += calculateAge(job.start, job.end);
+        }
+    }
+    return total;
+}
+
+export function createPointsReport(applicant, date = new Date()) {
     // TODO: refactor this so it returns a report object containing:
     // 1. the points acquired per criteria
     // 2. a method to tally them all up

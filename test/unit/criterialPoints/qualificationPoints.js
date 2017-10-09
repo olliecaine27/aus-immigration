@@ -2,7 +2,7 @@ import {assert} from 'chai';
 import {qualitificationPoints} from '../../../src/criteriaPoints';
 import QUALIFICATIONS from '../../../src/constants/qualifications';
 
-describe('Qualification points', () => {
+describe('qualitificationPoints', () => {
 	describe('A Doctorate degree from an Australian educational institution or a Doctorate from another educational institution that is of a recognised standard.', () => {
 		it('Should return 20 points', () => {
 			let result = qualitificationPoints(QUALIFICATIONS.DoctorateDegree);

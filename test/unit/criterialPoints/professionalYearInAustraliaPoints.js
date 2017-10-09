@@ -1,7 +1,7 @@
 import {assert} from 'chai';
 import {professionalYearInAustraliaPoints} from '../../../src/criteriaPoints';
 
-describe('Professioanl year in Australia', () => {
+describe('professionalYearInAustraliaPoints', () => {
 	describe('Professional year in Australia', () => {
 		it('Should return 5 points', () => {
 			let result = professionalYearInAustraliaPoints(true);

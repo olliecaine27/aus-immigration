@@ -2,7 +2,7 @@ import {assert} from 'chai';
 import {englishLevelPoints} from '../../../src/criteriaPoints';
 import ENGLISH_LEVEL from '../../../src/constants/englishLevels';
 
-describe('English level points', () => {
+describe('englishLevelPoints', () => {
 	describe('Competent English', () => {
 		it('Should return 0 points', () => {
 			let result = englishLevelPoints(ENGLISH_LEVEL.Competent);

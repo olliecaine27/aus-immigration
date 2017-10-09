@@ -1,7 +1,7 @@
 import {assert} from 'chai';
 import {studiedInRegionalAustraliaPoints} from '../../../src/criteriaPoints';
 
-describe('Studied in Australia points', () => {
+describe('studiedInRegionalAustraliaPoints', () => {
 	describe('Study in regional Australia or a low population growth metropolitan area that meets the Australian study requirement', () => {
 		it('Should return 5 points', () => {
 			let result = studiedInRegionalAustraliaPoints(true);

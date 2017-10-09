@@ -1,7 +1,7 @@
 import {assert} from 'chai';
 import {skilledEmploymentOutAustraliaPoints} from '../../../src/criteriaPoints';
 
-describe('Skilled employment outside Australia in the last 10 years', () => {
+describe('skilledEmploymentOutAustraliaPoints', () => {
 	describe('Less than 3 years', () => {
 		it('Should return 0 points', () => {
 			let result = skilledEmploymentOutAustraliaPoints(2);

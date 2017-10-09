@@ -3,7 +3,7 @@ import {createPointsReport} from '../src/pointsCalculator';
 import ENGLISH_LEVEL from './../src/constants/englishLevels';
 import QUALIFICATIONS from './../src/constants/qualifications';
 
-describe.only('My total points', () => {
+describe('My total points', () => {
 
     const config = {
         dob: new Date(1985, 11, 27),

@@ -4,7 +4,7 @@ import {createPointsReport} from '../../../src/pointsCalculator';
 describe('createPointsReport', () => {
 	describe('When calculating points', () => {
 		it('Should default to todays date', () => {
-			let result = createPointsReport()
+			let result = createPointsReport({dob: new Date()})
 
 			assert.equal(result.calculationDate.getDate(), new Date().getDate());
 			assert.equal(result.calculationDate.getMonth(), new Date().getMonth());

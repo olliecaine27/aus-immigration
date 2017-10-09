@@ -19,65 +19,95 @@ export function calculateSkilledEmploymentYears(careerHistory, countingInAustral
 }
 
 export function createPointsReport(applicant, date = new Date()) {
-    // TODO: refactor this so it returns a report object containing:
-    // 1. the points acquired per criteria
-    // 2. a method to tally them all up
-    // 3. a array of unclaimed points
+    const pointsCriteria = {
+        agePoints: 0,
+        englishLevelPoints: 0,
+        skilledEmploymentInAustraliaPoints: 0,
+        skilledEmploymentOutAustraliaPoints: 0,
+        qualitificationPoints: 0,
+        australianStudyRequirementPoints: 0,
+        specialistEducationQualificationPoints: 0,
+        accreditedInCommunityLanguagePoints: 0,
+        studiedInRegionalAustraliaPoints: 0,
+        partnerSkillQualificationPoints: 0,
+        professionalYearInAustraliaPoints: 0
+    };
+
+    if (applicant.dob) {
+        pointsCriteria.agePoints
+            = criteriaPoints.agePoints(daysBetweenDates(applicant.dob, date));
+    }
+
+    if (applicant.englishLevel) {
+        pointsCriteria.englishLevelPoints
+            = criteriaPoints.englishLevelPoints(applicant.englishLevel);
+    }
+
+    if (applicant.careerHistory) {
+        const skilledYearsInsideOz = calculateSkilledEmploymentYears(applicant.careerHistory, true);
+        pointsCriteria.skilledEmploymentInAustraliaPoints
+            = criteriaPoints.skilledEmploymentInAustraliaPoints(skilledYearsInsideOz);
+
+        const skilledYearsOutsideOz = calculateSkilledEmploymentYears(applicant.careerHistory, false);
+        pointsCriteria.skilledEmploymentOutAustraliaPoints
+            = criteriaPoints.skilledEmploymentOutAustraliaPoints(skilledYearsOutsideOz);
+    }
+
+    if (applicant.qualification) {
+        pointsCriteria.qualitificationPoints
+            = criteriaPoints.qualitificationPoints(applicant.qualification);
+    }
+
+    if (applicant.australianStudyRequirement) {
+        pointsCriteria.australianStudyRequirementPoints
+            = criteriaPoints.australianStudyRequirementPoints(applicant.australianStudyRequirement);
+    }
+
+    if (applicant.specialistEducationQualification) {
+        pointsCriteria.specialistEducationQualificationPoints =
+            criteriaPoints.specialistEducationQualificationPoints(applicant.specialistEducationQualification);
+    }
+
+    if (applicant.accreditedInACommunityLanguage) {
+        pointsCriteria.accreditedInCommunityLanguagePoints =
+            criteriaPoints.accreditedInCommunityLanguagePoints(applicant.accreditedInACommunityLanguage);
+    }
+
+    if (applicant.studiedInRegionalAustralia) {
+        pointsCriteria.studiedInRegionalAustraliaPoints
+            = criteriaPoints.studiedInRegionalAustraliaPoints(applicant.studiedInRegionalAustralia);
+    }
+
+    if (applicant.partnerSkillQualifications) {
+        pointsCriteria.partnerSkillQualificationPoints
+            = criteriaPoints.partnerSkillQualificationPoints(applicant.partnerSkillQualifications);
+    }
+
+    if (applicant.professionalYearInAustralia) {
+        pointsCriteria.professionalYearInAustraliaPoints
+            = criteriaPoints.professionalYearInAustraliaPoints(applicant.professionalYearInAustralia);
+    }
 
     return {
         calculationDate: date,
+        pointsCriteria,
         totalPoints() {
-            let totalPoints = 0;
-
-            if (applicant.dob) { totalPoints += criteriaPoints.agePoints(daysBetweenDates(applicant.dob, date)); }
-
-            if (applicant.englishLevel) { totalPoints += criteriaPoints.englishLevelPoints(applicant.englishLevel); }
-
-            if (applicant.careerHistory) {
-                let skillPoints = 0;
-
-                const skilledYearsInsideOz = calculateSkilledEmploymentYears(applicant.careerHistory, true);
-                skillPoints += criteriaPoints.skilledEmploymentInAustraliaPoints(skilledYearsInsideOz);
-
-                const skilledYearsOutsideOz = calculateSkilledEmploymentYears(applicant.careerHistory, false);
-                skillPoints += criteriaPoints.skilledEmploymentOutAustraliaPoints(skilledYearsOutsideOz);
-
-                if (skillPoints > 20) { skillPoints = 20; }
-
-                totalPoints += skillPoints;
+            let total = 0;
+            for (const points in this.pointsCriteria) {
+                // skilledEmploymentInAustraliaPoints
+                // skilledEmploymentOutAustraliaPoints
+                // if (skillPoints > 20) { skillPoints = 20; }
+                total += pointsCriteria[points];
             }
 
-            if (applicant.qualification) {
-                totalPoints += criteriaPoints.qualitificationPoints(applicant.qualification);
+            const skillTotal =
+                this.pointsCriteria.skilledEmploymentInAustraliaPoints
+                + this.pointsCriteria.skilledEmploymentOutAustraliaPoints;
+            if (skillTotal > 20) {
+                total -= skillTotal - 20;
             }
 
-            if (applicant.australianStudyRequirement) {
-                totalPoints += criteriaPoints.australianStudyRequirementPoints(applicant.australianStudyRequirement);
-            }
-
-            if (applicant.specialistEducationQualification) {
-                totalPoints +=
-                    criteriaPoints.specialistEducationQualificationPoints(applicant.specialistEducationQualification);
-            }
-
-            if (applicant.accreditedInACommunityLanguage) {
-                totalPoints +=
-                    criteriaPoints.accreditedInCommunityLanguagePoints(applicant.accreditedInACommunityLanguage);
-            }
-
-            if (applicant.studiedInRegionalAustralia) {
-                totalPoints += criteriaPoints.studiedInRegionalAustraliaPoints(applicant.studiedInRegionalAustralia);
-            }
-
-            if (applicant.partnerSkillQualifications) {
-                totalPoints += criteriaPoints.partnerSkillQualificationPoints(applicant.partnerSkillQualifications);
-            }
-
-            if (applicant.professionalYearInAustralia) {
-                totalPoints += criteriaPoints.professionalYearInAustraliaPoints(applicant.professionalYearInAustralia);
-            }
-
-            return totalPoints;
+            return total;
         }
     };
 }

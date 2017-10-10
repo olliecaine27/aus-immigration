@@ -13,27 +13,34 @@ describe.only('My total points', () => {
                 // Technophobia / Web developer
                 start: new Date(2007, 6),
                 end: new Date(2013, 11),
-                inAppliedOccupation: true,
+                inAppliedOccupation: false,
                 inAustralia: false
             },
             {
                 // Lavender / Interaction developer
                 start: new Date(2013, 1),
                 end: new Date(2013, 5),
-                inAppliedOccupation: true,
+                inAppliedOccupation: false,
                 inAustralia: true
             },
             {
                 // Orchard Marketing / UI Developer
                 start: new Date(2013, 6),
                 end: new Date(2013, 11),
+                inAppliedOccupation: false,
+                inAustralia: true
+            },
+            {
+                // The Wine Quarter / Senior Software Engineer
+                start: new Date(2013, 11, 23),
+                end: new Date(2016, 10, 9),
                 inAppliedOccupation: true,
                 inAustralia: true
             },
             {
-                // The Wine Quarter / UI team lead
-                start: new Date(2013, 11, 23),
-                end: new Date(2016, 10, 9),
+                // Fluent Retail / Software Engineer
+                start: new Date(2017, 1, 20),
+                end: new Date(),
                 inAppliedOccupation: true,
                 inAustralia: true
             }

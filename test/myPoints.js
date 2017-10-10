@@ -13,28 +13,28 @@ describe.only('My total points', () => {
                 // Technophobia / Web developer
                 start: new Date(2007, 6),
                 end: new Date(2013, 11),
-                inAppliedOccupation: false,
+                inAppliedOccupation: true,
                 inAustralia: false
             },
             {
                 // Lavender / Interaction developer
                 start: new Date(2013, 1),
                 end: new Date(2013, 5),
-                inAppliedOccupation: false,
+                inAppliedOccupation: true,
                 inAustralia: true
             },
             {
                 // Orchard Marketing / UI Developer
                 start: new Date(2013, 6),
                 end: new Date(2013, 11),
-                inAppliedOccupation: false,
+                inAppliedOccupation: true,
                 inAustralia: true
             },
             {
                 // The Wine Quarter / UI team lead
                 start: new Date(2013, 11, 23),
                 end: new Date(2016, 10, 9),
-                inAppliedOccupation: false,
+                inAppliedOccupation: true,
                 inAustralia: true
             }
         ],
@@ -66,7 +66,7 @@ describe.only('My total points', () => {
 
     it('From today', () => {
 		for (var i = 0; i < 30; i++) {
-			let dateCheck = new Date(applicantInfo.dob.getFullYear() + i, 10, 27)
+			let dateCheck = new Date(2016 + i, 10, 27)
             let report = createPointsReport(applicantInfo, dateCheck)
 
             console.log(`Total points on birthday in ${dateCheck.getFullYear()}: ${report.tallyPoints()}`)

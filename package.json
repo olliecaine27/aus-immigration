@@ -1,7 +1,7 @@
 {
-  "name": "npm-module-boilerplate-es6",
+  "name": "aus-immigration",
   "version": "1.0.0",
-  "description": "Boilerplate for npm modules.",
+  "description": "Library for calculating Australian immigration points.",
   "main": "./lib/index.js",
   "scripts": {
     "clean": "rimraf lib",
@@ -19,7 +19,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Travelport-Ukraine/npm-module-boilerplate.git"
+    "url": "git+https://github.com/olliecaine27/aus-immigration.git"
   },
   "keywords": [
     "boilerplate",
@@ -28,12 +28,12 @@
     "node",
     "javascript"
   ],
-  "author": "Mark mail.ormark@gmail.com",
+  "author": "Oliver Caine olliecaine@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Travelport-Ukraine/npm-module-boilerplate/issues"
+    "url": "https://github.com/olliecaine27/aus-immigration/issues"
   },
-  "homepage": "https://github.com/Travelport-Ukraine/npm-module-boilerplate#readme",
+  "homepage": "https://github.com/olliecaine27/aus-immigration",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.14.0",

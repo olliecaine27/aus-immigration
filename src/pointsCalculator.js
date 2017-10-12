@@ -8,13 +8,13 @@ export function yearsBetweenDates(firstDate, secondDate) {
     return daysBetweenDates(firstDate, secondDate) / 365;
 }
 
-export function calculateSkilledEmploymentYears(careerHistory, countingInAustralia, years = 10) {
+export function calculateSkilledEmploymentYears(careerHistory, countingInAustralia) {
     let total = 0;
-    for (const job of careerHistory) {
+    careerHistory.forEach((job) => {
         if (job.inAustralia === countingInAustralia && job.inAppliedOccupation) {
             total += yearsBetweenDates(job.start, job.end);
         }
-    }
+    });
     return total;
 }
 
@@ -34,11 +34,8 @@ export function createPointsReport(applicant, date = new Date()) {
     };
 
     if (applicant.dob) {
-        // console.log('ollie', 'applicant.dob', applicant.dob);
         const age = yearsBetweenDates(applicant.dob, date);
-        // console.log('ollie', 'age', age);
         pointsCriteria.agePoints = criteriaPoints.agePoints(age);
-        // console.log('ollie', 'criteriaPoints.agePoints(age)', criteriaPoints.agePoints(age));
     }
 
     if (applicant.englishLevel) {
@@ -96,7 +93,10 @@ export function createPointsReport(applicant, date = new Date()) {
         pointsCriteria,
         tallyPoints() {
             let total = 0;
-            for (const points in this.pointsCriteria) { total += pointsCriteria[points]; }
+
+            Object.keys(pointsCriteria).forEach((points) => {
+                total += pointsCriteria[points];
+            });
 
             const skillTotal =
                 this.pointsCriteria.skilledEmploymentInAustraliaPoints

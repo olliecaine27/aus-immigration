@@ -34,14 +34,14 @@ describe.only('My total points', () => {
                 // The Wine Quarter / Senior Software Engineer
                 start: new Date(2013, 11, 23),
                 end: new Date(2016, 10, 9),
-                inAppliedOccupation: true,
+                inAppliedOccupation: false,
                 inAustralia: true
             },
             {
                 // Fluent Retail / Software Engineer
                 start: new Date(2017, 1, 20),
                 end: new Date(),
-                inAppliedOccupation: true,
+                inAppliedOccupation: false,
                 inAustralia: true
             }
         ],

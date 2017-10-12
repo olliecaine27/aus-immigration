@@ -1,6 +1,6 @@
 {
   "name": "aus-immigration",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Library for calculating Australian immigration points.",
   "main": "./lib/index.js",
   "scripts": {

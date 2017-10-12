@@ -11,7 +11,7 @@ npm version $releaseType
 
 echo "Creating git tag..."
 packageVersion=$(node -p "require('./package.json').version")
-git tag $packageVersion
+git tag "v$packageVersion"
 
 echo "Pushing tags..."
 git push && git push --tags

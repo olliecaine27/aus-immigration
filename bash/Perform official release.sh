@@ -3,20 +3,28 @@ cd "$(dirname "$0")"
 cd ../
 ${0} # run current file
 
+if [[ -z $(git status -s) ]]
+then
+  echo "tree is clean"
+else
+  echo "tree is dirty, please commit changes before running this"
+  exit
+fi
+
 echo "Enter release type (patch|minor|major): "
 read releaseType
 
-echo "Committing files so verrsion can be updated..."
+echo "Adding existing changes..."
 git add .
-git commit -m "Committing files so verrsion can be updated"
 
 echo "Updating package.json with new version..."
 npm version $releaseType
+git add .
 
 packageVersion=$(node -p "require('./package.json').version")
 
-echo "Committing version change"
-git commit -m "Updating version to $packageVersion"
+echo "Committing version change in package.json..."
+git commit -m "Updating version in package.json to $packageVersion"
 
 echo "Creating git tag..."
 git tag "v$packageVersion"

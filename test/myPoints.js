@@ -10,23 +10,9 @@ describe('My total points', () => {
         englishLevel: ENGLISH_LEVEL.Superior,
         careerHistory: [
             {
-                // Technophobia / Web developer
-                start: new Date(2007, 6),
-                end: new Date(2013, 11),
-                inAppliedOccupation: false,
-                inAustralia: false
-            },
-            {
-                // Lavender / Interaction developer
-                start: new Date(2013, 1),
-                end: new Date(2013, 5),
-                inAppliedOccupation: false,
-                inAustralia: true
-            },
-            {
-                // Orchard Marketing / UI Developer
-                start: new Date(2013, 6),
-                end: new Date(2013, 11),
+                // Fluent Retail / Software Engineer
+                start: new Date(2017, 1, 20),
+                end: new Date(),
                 inAppliedOccupation: false,
                 inAustralia: true
             },
@@ -38,11 +24,25 @@ describe('My total points', () => {
                 inAustralia: true
             },
             {
-                // Fluent Retail / Software Engineer
-                start: new Date(2017, 1, 20),
-                end: new Date(),
+                // Orchard Marketing / UI Developer
+                start: new Date(2013, 6),
+                end: new Date(2013, 11, 13),
                 inAppliedOccupation: false,
                 inAustralia: true
+            },
+            {
+                // Lavender / Interaction developer
+                start: new Date(2013, 1, 4),
+                end: new Date(2013, 5, 28),
+                inAppliedOccupation: false,
+                inAustralia: true
+            },
+            {
+                // Technophobia / Web developer
+                start: new Date(2007, 6),
+                end: new Date(2013, 11),
+                inAppliedOccupation: false,
+                inAustralia: false
             }
         ],
         qualification: QUALIFICATIONS.BachelorDegree,
